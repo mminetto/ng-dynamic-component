@@ -1,0 +1,1 @@
+{"version":3,"file":"component-registry.js","sourceRoot":"","sources":["../../src/dynamic/component-registry.ts"],"names":[],"mappings":";;;;AACA,MAAM;;;;;IAIK,MAAM,CAAC,OAAO,CAAC,IAAS;QAC3B,eAAe,CAAC,QAAQ,CAAC,GAAG,CAAC,IAAI,CAAC,IAAI,EAAE,IAAI,CAAC,CAAC;;;;;;IAG3C,MAAM,CAAC,OAAO,CAAC,SAAiB;QACnC,MAAM,CAAC,eAAe,CAAC,QAAQ,CAAC,GAAG,CAAC,SAAS,CAAC,CAAC;;;2BAPjC,IAAI,GAAG,EAAe"}
