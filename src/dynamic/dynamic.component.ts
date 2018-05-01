@@ -13,12 +13,15 @@ import {
   ViewContainerRef
 } from '@angular/core';
 
+import { RegisterService } from './component-registry';
+
 @Component({
   selector: 'ndc-dynamic',
   template: ''
 })
 export class DynamicComponent implements OnChanges, ComponentInjector {
 
+  @Input() ndcDynamicComponentName: string;
   @Input() ndcDynamicComponent: Type<any>;
   @Input() ndcDynamicInjector: Injector;
   @Input() ndcDynamicProviders: Provider[];
@@ -32,7 +35,7 @@ export class DynamicComponent implements OnChanges, ComponentInjector {
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['ndcDynamicComponent']) {
+    if (changes['ndcDynamicComponent'] || changes['ndcDynamicComponentName']) {
       this.createDynamicComponent();
     }
   }
@@ -40,6 +43,10 @@ export class DynamicComponent implements OnChanges, ComponentInjector {
   createDynamicComponent() {
     this._vcr.clear();
     this.componentRef = null;
+
+    if(this.ndcDynamicComponentName){
+      this.ndcDynamicComponent = RegisterService.getType(this.ndcDynamicComponentName);
+    }
 
     if (this.ndcDynamicComponent) {
       this.componentRef = this._vcr.createComponent(

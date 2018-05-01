@@ -12,6 +12,8 @@ import { DynamicAttributesDirective } from './dynamic-attributes.directive';
 import { DynamicComponent } from './dynamic.component';
 import { DynamicDirective } from './dynamic.directive';
 
+import { RegisterService } from './component-registry';
+
 @NgModule({
   imports: [CommonModule],
   declarations: [
@@ -32,6 +34,9 @@ export class DynamicModule {
     components: Type<any>[],
     componentInjector: Type<ComponentInjector> = DynamicComponent,
   ): ModuleWithProviders {
+
+    components.forEach( x => RegisterService.setType(x));
+
     return {
       ngModule: DynamicModule,
       providers: [
